@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Movie from './Movie';
+import { LoadingOutlined } from '@ant-design/icons';
 
 //부모가 배열을 가지고있음 -> 자식은 props을 통해 호출가능
 // const movieTitle = [
@@ -118,10 +119,19 @@ class App extends Component {
         return <Movie title={movie.title} poster={movie.poster} key={index} />
         })
       } */}
-        {this.state.movies ? this._renderMovies() : 'loading'}
+        {this.state.movies ? this._renderMovies() : loadingText()}
       </div>
     )
   }
+}
+
+function loadingText(){
+  return(
+    <>
+    <LoadingOutlined />
+    <div style={{marginLeft:"10px"}}>Loading...</div>
+    </>
+  );
 }
 
 export default App;
